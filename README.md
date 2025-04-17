@@ -1,71 +1,41 @@
-# Titanic-Survival-Prediction-ML-Project
-Predicting survival on the Titanic using machine learning. A beginner-friendly classification project using data cleaning, feature engineering, and model training (Logistic Regression, Random Forest, XGBoost).
+🚢 Titanic Survival Prediction – Ensemble Modeling Approach
 
+In this notebook, we tackle the classic Titanic survival prediction problem using a structured and model-driven approach. Rather than relying on a single algorithm, we compare multiple machine learning models and ultimately combine them through ensembling to improve accuracy and generalization.
 
-# 🚢 Titanic Survival Prediction: Machine Learning Project
+⸻
 
-A complete end-to-end machine learning project using the classic Titanic dataset. This notebook demonstrates data cleaning, exploratory analysis, feature engineering, and training multiple ML models to predict passenger survival.
+🧠 Key Steps in This Notebook:
 
----
+🧹 Data Cleaning & Feature Engineering
+	•	Extracted meaningful features such as Title, FamilySize, IsAlone, and CabinLetter
+	•	Encoded categorical variables using label encoding
+	•	Handled missing values (e.g., imputing Age and Fare with the mean)
 
-## 📦 Dataset
+🤖 Model Training
 
-- Source: [Kaggle Titanic Competition](https://www.kaggle.com/c/titanic)
-- Format: CSV
-- Key columns: `Pclass`, `Sex`, `Age`, `SibSp`, `Fare`, `Embarked`, `Survived`
+Trained and evaluated three high-performing tree-based models:
+	•	Random Forest – A classic ensemble of decision trees using bagging
+	•	XGBoost – A gradient boosting model optimized for speed and performance
+	•	HistGradientBoosting (HGB) – A fast, histogram-based gradient boosting algorithm built into scikit-learn
 
----
+🔗 Model Ensembling (Stacking)
 
-## 🧰 Tools & Libraries
+After comparing the performance of individual models, we combined them using a stacking ensemble:
+	•	The predictions of the base models (Random Forest, XGBoost, and HGB) were fed into a Logistic Regression meta-model
+	•	This stacked model learned to leverage the strengths of each base learner to produce a final prediction
 
-- Python
-- pandas, numpy
-- matplotlib, seaborn
-- scikit-learn
-- XGBoost (optional)
+📤 Final Prediction & Submission
+	•	Trained the ensemble model on the full training dataset
+	•	Predicted outcomes on the test set
+	•	Submitted results in the required format for the Titanic Kaggle competition
+✅ Current best accuracy: ~75%
 
----
+⸻
 
-## 🧹 Data Cleaning
+🔍 What’s Next
 
-- Handled missing values in `Age`, `Embarked`, and `Cabin`
-- Converted categorical variables (`Sex`, `Embarked`) into numeric form
-- Removed outliers and unnecessary columns
-
----
-
-## 📊 Exploratory Data Analysis (EDA)
-
-- Survival rate by gender, class, age, and embarkation point
-- Distribution plots and heatmaps to visualize correlations
-
----
-
-## 🛠️ Feature Engineering
-
-- Created new features like `FamilySize`, `IsAlone`, and `Title`
-- Binned age and fare into categories for better modeling
-- One-hot encoded categorical variables
-
----
-
-## 🤖 Model Training & Evaluation
-
-Tested multiple ML models:
-
-| Model              | Accuracy Score |
-|--------------------|----------------|
-| Logistic Regression| 78%            |
-| Random Forest      | 81%            |
-| XGBoost            | 82%            |
-
-- Used train/test split for validation
-- Cross-validated results
-- Confusion matrix and classification report for final evaluation
-
----
-
-## 📈 Results
-
-XGBoost gave the best performance with an accuracy of **~82%**, outperforming baseline models. Feature importance showed `Sex`, `Pclass`, and `Fare` were the most influential factors in predicting survival.
+To improve the accuracy score, I’ve been researching other approaches and plan to refine this solution in a future notebook. Specifically:
+	•	Use MICE imputation for more accurate handling of missing data (instead of mean imputation or dropping rows)
+	•	Switch to One-Hot Encoding to simplify categorical variable handling
+	•	Focus on a single strong model, most likely Random Forest, to reduce complexity and boost interpretability
 
